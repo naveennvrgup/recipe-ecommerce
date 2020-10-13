@@ -1,9 +1,13 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom'
+import RecipesScreen from './components/RecipesScreen'
 
 function App() {
   return (
     <div className="App">
-      <h1>hello</h1>
+      <BrowserRouter>
+        <RecipesScreen />
+      </BrowserRouter>
     </div>
   );
 }
