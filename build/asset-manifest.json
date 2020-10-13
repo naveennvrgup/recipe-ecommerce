@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/naveennvrgup/recipe-ecommerce/build/static/css/main.2b6d177a.chunk.css",
-    "main.js": "/naveennvrgup/recipe-ecommerce/build/static/js/main.3409e351.chunk.js",
-    "main.js.map": "/naveennvrgup/recipe-ecommerce/build/static/js/main.3409e351.chunk.js.map",
-    "runtime-main.js": "/naveennvrgup/recipe-ecommerce/build/static/js/runtime-main.6e47c8e1.js",
-    "runtime-main.js.map": "/naveennvrgup/recipe-ecommerce/build/static/js/runtime-main.6e47c8e1.js.map",
-    "static/js/2.118b4c64.chunk.js": "/naveennvrgup/recipe-ecommerce/build/static/js/2.118b4c64.chunk.js",
-    "static/js/2.118b4c64.chunk.js.map": "/naveennvrgup/recipe-ecommerce/build/static/js/2.118b4c64.chunk.js.map",
-    "index.html": "/naveennvrgup/recipe-ecommerce/build/index.html",
-    "precache-manifest.4816253189f9ccb64f9dd041c824fdde.js": "/naveennvrgup/recipe-ecommerce/build/precache-manifest.4816253189f9ccb64f9dd041c824fdde.js",
-    "service-worker.js": "/naveennvrgup/recipe-ecommerce/build/service-worker.js",
-    "static/css/main.2b6d177a.chunk.css.map": "/naveennvrgup/recipe-ecommerce/build/static/css/main.2b6d177a.chunk.css.map",
-    "static/js/2.118b4c64.chunk.js.LICENSE.txt": "/naveennvrgup/recipe-ecommerce/build/static/js/2.118b4c64.chunk.js.LICENSE.txt",
-    "static/media/american.png": "/naveennvrgup/recipe-ecommerce/build/static/media/american.e74659da.png",
-    "static/media/rupay.jpg": "/naveennvrgup/recipe-ecommerce/build/static/media/rupay.60b9e4c6.jpg",
-    "static/media/visa.png": "/naveennvrgup/recipe-ecommerce/build/static/media/visa.a47a87e0.png"
+    "main.css": "/recipe-ecommerce/build/static/css/main.2b6d177a.chunk.css",
+    "main.js": "/recipe-ecommerce/build/static/js/main.447f97d6.chunk.js",
+    "main.js.map": "/recipe-ecommerce/build/static/js/main.447f97d6.chunk.js.map",
+    "runtime-main.js": "/recipe-ecommerce/build/static/js/runtime-main.963bd503.js",
+    "runtime-main.js.map": "/recipe-ecommerce/build/static/js/runtime-main.963bd503.js.map",
+    "static/js/2.118b4c64.chunk.js": "/recipe-ecommerce/build/static/js/2.118b4c64.chunk.js",
+    "static/js/2.118b4c64.chunk.js.map": "/recipe-ecommerce/build/static/js/2.118b4c64.chunk.js.map",
+    "index.html": "/recipe-ecommerce/build/index.html",
+    "precache-manifest.b14d31f2c05d25f6e7a70fe5042d2bee.js": "/recipe-ecommerce/build/precache-manifest.b14d31f2c05d25f6e7a70fe5042d2bee.js",
+    "service-worker.js": "/recipe-ecommerce/build/service-worker.js",
+    "static/css/main.2b6d177a.chunk.css.map": "/recipe-ecommerce/build/static/css/main.2b6d177a.chunk.css.map",
+    "static/js/2.118b4c64.chunk.js.LICENSE.txt": "/recipe-ecommerce/build/static/js/2.118b4c64.chunk.js.LICENSE.txt",
+    "static/media/american.png": "/recipe-ecommerce/build/static/media/american.e74659da.png",
+    "static/media/rupay.jpg": "/recipe-ecommerce/build/static/media/rupay.60b9e4c6.jpg",
+    "static/media/visa.png": "/recipe-ecommerce/build/static/media/visa.a47a87e0.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6e47c8e1.js",
+    "static/js/runtime-main.963bd503.js",
     "static/js/2.118b4c64.chunk.js",
     "static/css/main.2b6d177a.chunk.css",
-    "static/js/main.3409e351.chunk.js"
+    "static/js/main.447f97d6.chunk.js"
   ]
 }
