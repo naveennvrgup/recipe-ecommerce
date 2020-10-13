@@ -1,12 +1,16 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import RecipesScreen from './components/RecipesScreen'
+import GatewayScreen from './components/GatewayScreen'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <RecipesScreen />
+      <Switch>
+        <Route path='/gateway/' component={GatewayScreen} />
+        <Route path='/' component={RecipesScreen} />
+      </Switch>
       </BrowserRouter>
     </div>
   );

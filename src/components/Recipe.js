@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {useHistory} from 'react-router'
 
-import {} from '../RootReducer'
+import {selectRecipe} from '../RootReducer'
 
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
@@ -54,9 +55,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const Recipe = ({recipieIndex,recipies}) => {
+export const Recipe = ({recipieIndex,recipies,selectRecipe}) => {
     const classes = useStyles();
     const recipie = recipies[recipieIndex]
+    const history = useHistory()
 
     return (
         <Grid className={classes.recipieRoot} item xs={4}>
@@ -88,8 +90,11 @@ export const Recipe = ({recipieIndex,recipies}) => {
                             <Chip label={recipie.label} size='small' /> :
                             null}
                     </div>
-                    <Button size="small" color="primary">
-                        add to cart
+                    <Button onClick={()=>history.push({
+                        pathname:'/gateway',
+                        state: recipie
+                    })} size="small" color="primary">
+                        buy
                     </Button>
                 </CardActions>
             </Card>
@@ -100,6 +105,7 @@ export const Recipe = ({recipieIndex,recipies}) => {
 const mapStateToProps = (state) => state
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+    selectRecipe
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)

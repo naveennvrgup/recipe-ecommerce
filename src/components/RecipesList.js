@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export function RecipesList({fetchRecipes, recipies}) {
+export function RecipesList({fetchRecipes, recipies, orders}) {
     const classes = useStyles();
 
     useEffect(() => {

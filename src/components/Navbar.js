@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -35,7 +39,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Navbar() {
+function Navbar({orders}) {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -94,3 +98,9 @@ export default function Navbar() {
   );
 }
 
+const mapStateToProps = (state) => state
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+},dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
