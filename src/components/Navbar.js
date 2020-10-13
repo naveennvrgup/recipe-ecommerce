@@ -38,7 +38,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function Navbar() {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -58,8 +58,8 @@ export default function Navbar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <ShoppingBasket />
           </IconButton>
-          <IconButton edge="start"  color="inherit" aria-label="menu">
-            <Avatar onClick={handleClickOpen} alt="Starlord" src={require('../assets/starlord.jpg')} />
+          <IconButton edge="start" onClick={handleClickOpen} color="inherit" aria-label="menu">
+            <Avatar  alt="Starlord" src={require('../assets/starlord.jpg')} />
           </IconButton>
         </Toolbar>
       </AppBar>
