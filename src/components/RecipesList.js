@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
 
 import Axios from 'axios'
 
@@ -20,13 +21,33 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "100px",
     },
     recipieCardRoot: {
-        maxWidth: 345,
+        maxWidth: 300,
+        display: 'flex',
+        flexGrow: 1,
+        flexDirection: 'column',
     },
-    media: {
-        height: 140,
+    recipieMedia: {
+        height: 200,
+    },
+    recipieRoot: {
+        paddingTop: theme.spacing(2),
+        display: 'flex',
     },
     root: {
-        paddingTop: theme.spacing(5),
+        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(5),
+    },
+    recipieCardActions: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    recipieTop: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'start',
+    },
+    recipieDescription: {
+        flexGrow: 1,
     }
 }));
 
@@ -35,56 +56,62 @@ export default function RecipesList() {
     const classes = useStyles();
     const [recipies, setRecipies] = useState([])
 
-    // useEffect(() => {
-    //     Axios.get("http://starlord.hackerearth.com/recipe")
-    //     .then(response=>{
-    //         const {data}=response
-    //         setRecipies(recipies)
-    //     })
-    // })
+    useEffect(() => {
+        Axios.get("http://starlord.hackerearth.com/recipe")
+            .then(response => {
+                const { data } = response
+                setRecipies(data)
+            })
+    })
 
-    return <Grid className={classes.root}>
-        <Card className={classes.recipieCardRoot}>
-            <CardActionArea>
+    const recipeMapper = (recipie) =>
+        <Grid key={recipie.id} className={classes.recipieRoot} item xs={4}>
+            <Card className={classes.recipieCardRoot}>
                 <CardMedia
-                    className={classes.media}
-                    image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
+                    className={classes.recipieMedia}
+                    image={recipie.image}
+                    title={recipie.name}
                 />
-                <CardContent>
+                <CardContent className={classes.recipieDescription}>
+                    <div className={classes.recipieTop}>
+                        <Typography color="textSecondary" gutterBottom>
+                            {recipie.category}
+                        </Typography>
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                            ${recipie.price}
+                        </Typography>
+                    </div>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
-          </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
-          </Typography>
+                        {recipie.name}
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                        {recipie.description}
+                    </Typography>
                 </CardContent>
-            </CardActionArea>
-            <CardActions>
-                <Button size="small" color="primary">
-                    Share
-        </Button>
-                <Button size="small" color="primary">
-                    Learn More
-        </Button>
-            </CardActions>
-        </Card>
-    </Grid>
+                <CardActions className={classes.recipieTop}>
+                    <div>
+                        {recipie.label.length > 0 ?
+                            <Chip label={recipie.label} size='small' /> :
+                            null}
+                    </div>
+                    <Button size="small" color="primary">
+                        add to cart
+                    </Button>
+                </CardActions>
+            </Card>
+        </Grid>
 
 
-    if (recipies.length == 0) {
+    if (recipies.length === 0) {
         return <div className={classes.loaderRoot}>
             <CircularProgress color="secondary" />
         </div>
     }
 
-    const recipeMapper = (recipie) => <Grid>
-        recipeMapper
-    </Grid>
+
 
     return (
-        <Grid>
+        <Grid container alignItems="stretch" spacing={2} className={classes.root}>
             {recipies.map(recipie => recipeMapper(recipie))}
         </Grid>
     )
