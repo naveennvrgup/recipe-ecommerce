@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import {changeMsg} from '../RootReducer'
+import {} from '../RootReducer'
 
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -55,56 +54,52 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const Recipe = ({recipie,msg,changeMsg}) => {
+export const Recipe = ({recipieIndex,recipies}) => {
     const classes = useStyles();
+    const recipie = recipies[recipieIndex]
 
-    return <div>
-        {msg}
-        <button onClick={changeMsg}>clickme</button>
-    </div>
-    // return (
-    //     <Grid className={classes.recipieRoot} item xs={4}>
-    //         <Card className={classes.recipieCardRoot}>
-    //             <CardMedia
-    //                 className={classes.recipieMedia}
-    //                 image={recipie.image}
-    //                 title={recipie.name}
-    //             />
-    //             <CardContent className={classes.recipieDescription}>
-    //                 <div className={classes.recipieTop}>
-    //                     <Typography color="textSecondary" gutterBottom>
-    //                         {recipie.category}
-    //                     </Typography>
-    //                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-    //                         ${recipie.price}
-    //                     </Typography>
-    //                 </div>
-    //                 <Typography gutterBottom variant="h5" component="h2">
-    //                     {recipie.name}
-    //                 </Typography>
-    //                 <Typography variant="body2" component="p">
-    //                     {recipie.description}
-    //                 </Typography>
-    //             </CardContent>
-    //             <CardActions className={classes.recipieTop}>
-    //                 <div>
-    //                     {recipie.label.length > 0 ?
-    //                         <Chip label={recipie.label} size='small' /> :
-    //                         null}
-    //                 </div>
-    //                 <Button size="small" color="primary">
-    //                     add to cart
-    //                 </Button>
-    //             </CardActions>
-    //         </Card>
-    //     </Grid>
-    // )
+    return (
+        <Grid className={classes.recipieRoot} item xs={4}>
+            <Card className={classes.recipieCardRoot}>
+                <CardMedia
+                    className={classes.recipieMedia}
+                    image={recipie.image}
+                    title={recipie.name}
+                />
+                <CardContent className={classes.recipieDescription}>
+                    <div className={classes.recipieTop}>
+                        <Typography color="textSecondary" gutterBottom>
+                            {recipie.category}
+                        </Typography>
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                            ${recipie.price}
+                        </Typography>
+                    </div>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {recipie.name}
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                        {recipie.description}
+                    </Typography>
+                </CardContent>
+                <CardActions className={classes.recipieTop}>
+                    <div>
+                        {recipie.label.length > 0 ?
+                            <Chip label={recipie.label} size='small' /> :
+                            null}
+                    </div>
+                    <Button size="small" color="primary">
+                        add to cart
+                    </Button>
+                </CardActions>
+            </Card>
+        </Grid>
+    )
 }
 
 const mapStateToProps = (state) => state
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    changeMsg
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe)

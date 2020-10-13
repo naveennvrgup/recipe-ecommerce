@@ -1,22 +1,31 @@
-export const CHANGE_MSG='CHANGE_MSG'
+import Axios from 'axios'
 
-export const changeMsg = () => dispatch => {
-    dispatch({
-        type:CHANGE_MSG
-    })
+export const FETCH_RECIPES = 'FETCH_RECIPES'
+export const SELECT_RECIPE = 'SELECT_RECIPE'
+
+
+export const fetchRecipes = () => dispatch => {
+    Axios.get("http://starlord.hackerearth.com/recipe")
+        .then(response => {
+            const { data } = response
+            console.log(data)
+            dispatch({
+                type: FETCH_RECIPES,
+                payload: data
+            })
+        })
 }
 
-const initialState={
-    "msg":"hello"
+const initialState = {
+    recipies: [],
+    orders: [],
 }
 
-export default (state=initialState, action) => {
-    switch(action.type){
-        case CHANGE_MSG:
-            return {
-                "msg":"naveen"
-            }
-        default: 
+export default (state = initialState, action) => {
+    switch (action.type) {
+        case FETCH_RECIPES:
+            return { ...state, recipies: action.payload }
+        default:
             return initialState
-    }    
+    }
 }

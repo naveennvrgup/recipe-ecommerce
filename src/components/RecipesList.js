@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-import Axios from 'axios'
 import Recipe from './Recipe'
+import {fetchRecipes} from '../RootReducer'
 
+import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid'
 
@@ -15,48 +17,18 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         paddingTop: "100px",
     },
-    recipieCardRoot: {
-        maxWidth: 300,
-        display: 'flex',
-        flexGrow: 1,
-        flexDirection: 'column',
-    },
-    recipieMedia: {
-        height: 200,
-    },
-    recipieRoot: {
-        paddingTop: theme.spacing(2),
-        display: 'flex',
-    },
     root: {
         marginTop: theme.spacing(4),
         marginBottom: theme.spacing(5),
     },
-    recipieCardActions: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-    },
-    recipieTop: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'start',
-    },
-    recipieDescription: {
-        flexGrow: 1,
-    }
 }));
 
 
-export default function RecipesList() {
+export function RecipesList({fetchRecipes, recipies}) {
     const classes = useStyles();
-    const [recipies, setRecipies] = useState([])
 
     useEffect(() => {
-        Axios.get("http://starlord.hackerearth.com/recipe")
-            .then(response => {
-                const { data } = response
-                setRecipies(data)
-            })
+        fetchRecipes()
     },[])
 
 
@@ -70,7 +42,15 @@ export default function RecipesList() {
 
     return (
         <Grid container alignItems="stretch" spacing={2} className={classes.root}>
-            {recipies.map(recipie => <Recipe key={recipie.id} recipie={recipie}/>)}
+            {recipies.map((recipie,i) => <Recipe key={i} recipieIndex={i}/>)}
         </Grid>
     )
 }
+
+const mapStateToProps = (state) => state
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    fetchRecipes
+},dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesList)
